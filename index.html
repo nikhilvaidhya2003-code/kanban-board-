@@ -8,26 +8,46 @@
 </head>
 <body>
 
-  <h1>Kanban Board</h1>
+  <header>
+    <h1>🚀 Kanban Board</h1>
+  </header>
 
   <div class="board">
 
+    <!-- Column -->
     <div class="column" id="todo">
       <h2>To Do</h2>
+
       <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <button onclick="addTask('todo')">+ Add Task</button>
+
+      <div class="add-task">
+        <input type="text" placeholder="New task..." />
+        <button onclick="addTask(this)">+</button>
+      </div>
     </div>
 
+    <!-- Column -->
     <div class="column" id="inprogress">
       <h2>In Progress</h2>
+
       <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <button onclick="addTask('inprogress')">+ Add Task</button>
+
+      <div class="add-task">
+        <input type="text" placeholder="New task..." />
+        <button onclick="addTask(this)">+</button>
+      </div>
     </div>
 
+    <!-- Column -->
     <div class="column" id="done">
       <h2>Done</h2>
+
       <div class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-      <button onclick="addTask('done')">+ Add Task</button>
+
+      <div class="add-task">
+        <input type="text" placeholder="New task..." />
+        <button onclick="addTask(this)">+</button>
+      </div>
     </div>
 
   </div>

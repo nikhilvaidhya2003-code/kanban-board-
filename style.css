@@ -100,3 +100,26 @@ h1 {
 .add-task button:hover {
   background: #0072ff;
 }
+/* Dragging effect */
+.task.dragging {
+  opacity: 0.5;
+  transform: rotate(3deg) scale(1.05);
+}
+
+/* Drop highlight */
+.task-list.highlight {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+/* Smooth movement */
+.task {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Lift effect */
+.task:active {
+  cursor: grabbing;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}

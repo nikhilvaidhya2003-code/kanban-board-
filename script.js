@@ -1,19 +1,24 @@
 let taskId = 0;
 
-// Add new task
-function addTask(columnId) {
-  const taskText = prompt("Enter task:");
-  if (!taskText) return;
+// Add task from input
+function addTask(button) {
+  const input = button.previousElementSibling;
+  const text = input.value.trim();
+
+  if (!text) return;
 
   const task = document.createElement("div");
   task.className = "task";
   task.id = "task-" + taskId++;
   task.draggable = true;
-  task.innerText = taskText;
+  task.innerText = text;
 
   task.ondragstart = drag;
 
-  document.querySelector(`#${columnId} .task-list`).appendChild(task);
+  const column = button.closest(".column");
+  column.querySelector(".task-list").appendChild(task);
+
+  input.value = "";
 }
 
 // Drag start
@@ -29,12 +34,12 @@ function allowDrop(event) {
 // Drop task
 function drop(event) {
   event.preventDefault();
-  const taskId = event.dataTransfer.getData("text");
-  const task = document.getElementById(taskId);
+  const id = event.dataTransfer.getData("text");
+  const task = document.getElementById(id);
 
   if (event.target.classList.contains("task-list")) {
     event.target.appendChild(task);
-  } else if (event.target.classList.contains("column")) {
-    event.target.querySelector(".task-list").appendChild(task);
+  } else if (event.target.closest(".column")) {
+    event.target.closest(".column").querySelector(".task-list").appendChild(task);
   }
 }
